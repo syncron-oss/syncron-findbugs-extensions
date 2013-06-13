@@ -2,4 +2,15 @@
 <MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="messagecollection.xsd">
 
+	<Detector class="com.syncron.findbugsextensions.PrintStackTraceDetector">
+		<Details>Finds usage of Throwable.printStackTrace.</Details>
+	</Detector>
+	<BugPattern type="SYNC_PRINT_STACKTRACE">
+		<ShortDescription>Throwable.printStackTrace</ShortDescription>
+		<LongDescription>Throwable.printStackTrace in {1}</LongDescription>
+		<Details>
+			<![CDATA[<p>Usage of Throwable.printStackTrace is forbidden!</p>]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="PST">printStackTrace</BugCode>
 </MessageCollection>

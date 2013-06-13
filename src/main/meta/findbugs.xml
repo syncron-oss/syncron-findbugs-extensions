@@ -2,4 +2,9 @@
 	xsi:noNamespaceSchemaLocation="findbugsplugin.xsd" pluginid="com.syncron.findbugs"
 	provider="Syncron" website="http://www.syncron.com">
 
+	<Detector class="com.syncron.findbugsextensions.PrintStackTraceDetector"
+		reports="SYNC_PRINT_STACKTRACE" />
+	<BugPattern type="SYNC_PRINT_STACKTRACE" abbrev="PST"
+		category="CORRECTNESS" />
+
 </FindbugsPlugin>
