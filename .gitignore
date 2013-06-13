@@ -1,1 +1,6 @@
 target/
+*.patch
+test-output/
+.classpath
+.project
+.settings
