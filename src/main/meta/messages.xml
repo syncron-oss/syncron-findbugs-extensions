@@ -20,4 +20,22 @@
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="PST">printStackTrace</BugCode>
+	<Detector class="com.syncron.findbugsextensions.FinalOverrideDetector">
+		<Details>
+			<![CDATA[
+				<p>Finds classes and methods which override classes and
+				methods with Final annotation</p>
+			]]>
+		</Details>
+	</Detector>
+	<BugPattern type="SYNC_FINAL_OVERRIDDEN">
+		<ShortDescription>Class or method with @Final was extended
+		</ShortDescription>
+		<LongDescription>Class or method with @Final was extended {0}
+		</LongDescription>
+		<Details>
+			<![CDATA[<p>Cannot extend anything annotated @com.syncron.Final</p>]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="AF">Final</BugCode>
 </MessageCollection>

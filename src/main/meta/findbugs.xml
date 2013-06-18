@@ -6,5 +6,7 @@
 		reports="SYNC_PRINT_STACKTRACE" />
 	<BugPattern type="SYNC_PRINT_STACKTRACE" abbrev="PST"
 		category="CORRECTNESS" />
-
+	<Detector class="com.syncron.findbugsextensions.FinalOverrideDetector"
+		reports="SYNC_FINAL_OVERRIDDEN" />
+	<BugPattern type="SYNC_FINAL_OVERRIDDEN" abbrev="AF" category="CORRECTNESS" />
 </FindbugsPlugin>
