@@ -2,6 +2,13 @@
 <MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="messagecollection.xsd">
 
+	<Plugin>
+		<ShortDescription>Syncron Findbugs Extensions</ShortDescription>
+		<Details>
+			<![CDATA[<p>This plugin contains FindBugs detectors from the Syncron Findbugs Extensions project</p>]]>
+		</Details>
+	</Plugin>
+
 	<Detector class="com.syncron.findbugsextensions.PrintStackTraceDetector">
 		<Details>Finds usage of Throwable.printStackTrace.</Details>
 	</Detector>

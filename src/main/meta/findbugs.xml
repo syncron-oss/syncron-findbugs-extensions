@@ -1,5 +1,5 @@
 <FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="findbugsplugin.xsd" pluginid="com.syncron.findbugs"
+	xsi:noNamespaceSchemaLocation="findbugsplugin.xsd" pluginid="com.syncron.findbugs" defaultenabled="true"
 	provider="Syncron" website="http://www.syncron.com">
 
 	<Detector class="com.syncron.findbugsextensions.PrintStackTraceDetector"
