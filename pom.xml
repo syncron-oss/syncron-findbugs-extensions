@@ -3,11 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.syncron</groupId>
-	<artifactId>findbugs-extensions</artifactId>
-	<version>1.0.1</version>
+	<artifactId>syncron-findbugs-extensions</artifactId>
+	<version>1.2</version>
 	<packaging>jar</packaging>
 
-	<name>findbugs-extensions</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -15,7 +14,6 @@
 	</properties>
 
 	<build>
-		<finalName>syncron-findbugs-extensions-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
