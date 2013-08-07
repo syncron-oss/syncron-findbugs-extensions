@@ -2,6 +2,8 @@ package com.syncron.findbugsextensions.utils;
 
 import java.util.Collection;
 
+import org.testng.annotations.BeforeClass;
+
 import edu.umd.cs.findbugs.BugInstance;
 import edu.umd.cs.findbugs.BugPattern;
 import edu.umd.cs.findbugs.BugReporter;
@@ -9,6 +11,11 @@ import edu.umd.cs.findbugs.Detector;
 import edu.umd.cs.findbugs.DetectorFactoryCollection;
 
 public class BaseDetectorTestCase {
+
+	@BeforeClass
+	public void forceInitializationOfFindbugsMetaData() {
+		DetectorRunner.instance();
+	}
 
 	protected BugReporter getBugReporter() {
 		return DetectorRunner.STATIC_BUG_REPORTER;

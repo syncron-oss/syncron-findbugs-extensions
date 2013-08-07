@@ -18,4 +18,8 @@
 	<Detector class="com.syncron.findbugsextensions.SetStackTraceDetector" reports="SYNC_SET_STACKTRACE" />
 	<BugPattern type="SYNC_SET_STACKTRACE" abbrev="SST" category="CORRECTNESS" />
 
+	<Detector class="com.syncron.findbugsextensions.PackagePrivateGatherer" reports="" hidden="true" />
+	<Detector class="com.syncron.findbugsextensions.PackagePrivateDetector" reports="PACKAGE_PRIVATE_USAGE" />
+	<BugPattern type="PACKAGE_PRIVATE_USAGE" abbrev="PPU" category="CORRECTNESS" />
+
 </FindbugsPlugin>
