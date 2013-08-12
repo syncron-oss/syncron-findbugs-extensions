@@ -12,6 +12,15 @@
 	<Detector class="com.syncron.findbugsextensions.PrintStackTraceDetector">
 		<Details>Finds usage of Throwable.printStackTrace.</Details>
 	</Detector>
+
+	<Detector class="com.syncron.findbugsextensions.FinalOverrideDetector">
+		<Details>Finds classes and methods which override classes and methods with Final annotation</Details>
+	</Detector>
+
+	<Detector class="com.syncron.findbugsextensions.StaticDateCalendarDetector">
+		<Details>Finds usage of static Calendar or SimpleDateFormat</Details>
+	</Detector>
+
 	<BugPattern type="SYNC_PRINT_STACKTRACE">
 		<ShortDescription>Throwable.printStackTrace</ShortDescription>
 		<LongDescription>Throwable.printStackTrace in {1}</LongDescription>
@@ -20,14 +29,7 @@
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="PST">printStackTrace</BugCode>
-	<Detector class="com.syncron.findbugsextensions.FinalOverrideDetector">
-		<Details>
-			<![CDATA[
-				<p>Finds classes and methods which override classes and
-				methods with Final annotation</p>
-			]]>
-		</Details>
-	</Detector>
+
 	<BugPattern type="SYNC_FINAL_OVERRIDDEN">
 		<ShortDescription>Class or method with @Final was extended
 		</ShortDescription>
@@ -38,4 +40,23 @@
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="AF">Final</BugCode>
+
+	<BugPattern type="SYNC_STATIC_CALENDAR_INSTANCE">
+		<ShortDescription>java.util.Calendar</ShortDescription>
+		<LongDescription>static java.util.Calendar in {1}</LongDescription>
+		<Details>
+			<![CDATA[<p>Usage of static Calendar is forbidden</p>]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="SSCI">StaticCalendarInstance</BugCode>
+
+	<BugPattern type="SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE">
+		<ShortDescription>java.text.SimpleDateFormat</ShortDescription>
+		<LongDescription>static java.text.SimpleDateFormat in {1}</LongDescription>
+		<Details>
+			<![CDATA[<p>Usage of static SimpleDateFormat is forbidden</p>]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="SSSDFI">StaticSimpleDateFormatInstance</BugCode>
+
 </MessageCollection>

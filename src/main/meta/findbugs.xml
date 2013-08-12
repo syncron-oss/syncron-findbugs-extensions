@@ -1,12 +1,15 @@
-<FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="findbugsplugin.xsd" pluginid="com.syncron.findbugs" defaultenabled="true"
-	provider="Syncron" website="http://www.syncron.com">
+<FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="findbugsplugin.xsd"
+	pluginid="com.syncron.findbugs" defaultenabled="true" provider="Syncron" website="http://www.syncron.com">
 
-	<Detector class="com.syncron.findbugsextensions.PrintStackTraceDetector"
-		reports="SYNC_PRINT_STACKTRACE" />
-	<BugPattern type="SYNC_PRINT_STACKTRACE" abbrev="PST"
-		category="CORRECTNESS" />
-	<Detector class="com.syncron.findbugsextensions.FinalOverrideDetector"
-		reports="SYNC_FINAL_OVERRIDDEN" />
+	<Detector class="com.syncron.findbugsextensions.PrintStackTraceDetector" reports="SYNC_PRINT_STACKTRACE" />
+	<BugPattern type="SYNC_PRINT_STACKTRACE" abbrev="PST" category="CORRECTNESS" />
+
+	<Detector class="com.syncron.findbugsextensions.FinalOverrideDetector" reports="SYNC_FINAL_OVERRIDDEN" />
 	<BugPattern type="SYNC_FINAL_OVERRIDDEN" abbrev="AF" category="CORRECTNESS" />
+
+	<Detector class="com.syncron.findbugsextensions.StaticDateCalendarDetector" speed="fast"
+		reports="SYNC_STATIC_CALENDAR_INSTANCE,SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE" />
+	<BugPattern type="SYNC_STATIC_CALENDAR_INSTANCE" abbrev="SSCI" category="CORRECTNESS" />
+	<BugPattern type="SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE" abbrev="SSSDFI" category="CORRECTNESS" />
+
 </FindbugsPlugin>
