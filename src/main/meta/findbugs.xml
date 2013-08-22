@@ -12,4 +12,7 @@
 	<BugPattern type="SYNC_STATIC_CALENDAR_INSTANCE" abbrev="SSCI" category="CORRECTNESS" />
 	<BugPattern type="SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE" abbrev="SSSDFI" category="CORRECTNESS" />
 
+	<Detector class="com.syncron.findbugsextensions.ThrowableToStringDetector" reports="SYNC_THROWABLE_TOSTRING" />
+	<BugPattern type="SYNC_THROWABLE_TOSTRING" abbrev="STTS" category="CORRECTNESS" />
+
 </FindbugsPlugin>

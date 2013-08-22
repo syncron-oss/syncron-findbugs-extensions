@@ -21,6 +21,10 @@
 		<Details>Finds usage of static Calendar or SimpleDateFormat</Details>
 	</Detector>
 
+	<Detector class="com.syncron.findbugsextensions.ThrowableToStringDetector">
+		<Details>Finds overriding of Throwable.toString</Details>
+	</Detector>
+
 	<BugPattern type="SYNC_PRINT_STACKTRACE">
 		<ShortDescription>Throwable.printStackTrace</ShortDescription>
 		<LongDescription>Throwable.printStackTrace in {1}</LongDescription>
@@ -58,5 +62,14 @@
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="SSSDFI">StaticSimpleDateFormatInstance</BugCode>
+
+	<BugPattern type="SYNC_THROWABLE_TOSTRING">
+		<ShortDescription>Throwable.toString</ShortDescription>
+		<LongDescription>Throwable.toString in {1}</LongDescription>
+		<Details>
+			<![CDATA[<p>Overriding Throwable.toString is forbidden</p>]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="STTS">Throwable.toString</BugCode>
 
 </MessageCollection>
