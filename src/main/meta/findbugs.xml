@@ -15,4 +15,7 @@
 	<Detector class="com.syncron.findbugsextensions.ThrowableToStringDetector" reports="SYNC_THROWABLE_TOSTRING" />
 	<BugPattern type="SYNC_THROWABLE_TOSTRING" abbrev="STTS" category="CORRECTNESS" />
 
+	<Detector class="com.syncron.findbugsextensions.SetStackTraceDetector" reports="SYNC_SET_STACKTRACE" />
+	<BugPattern type="SYNC_SET_STACKTRACE" abbrev="SST" category="CORRECTNESS" />
+
 </FindbugsPlugin>

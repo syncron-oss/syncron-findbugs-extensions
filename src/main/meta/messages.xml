@@ -25,6 +25,10 @@
 		<Details>Finds overriding of Throwable.toString</Details>
 	</Detector>
 
+	<Detector class="com.syncron.findbugsextensions.SetStackTraceDetector">
+		<Details>Finds usage of Throwable.setStackTrace</Details>
+	</Detector>
+
 	<BugPattern type="SYNC_PRINT_STACKTRACE">
 		<ShortDescription>Throwable.printStackTrace</ShortDescription>
 		<LongDescription>Throwable.printStackTrace in {1}</LongDescription>
@@ -56,7 +60,8 @@
 
 	<BugPattern type="SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE">
 		<ShortDescription>java.text.SimpleDateFormat</ShortDescription>
-		<LongDescription>static java.text.SimpleDateFormat in {1}</LongDescription>
+		<LongDescription>static java.text.SimpleDateFormat in {1}
+		</LongDescription>
 		<Details>
 			<![CDATA[<p>Usage of static SimpleDateFormat is forbidden</p>]]>
 		</Details>
@@ -71,5 +76,14 @@
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="STTS">Throwable.toString</BugCode>
+
+	<BugPattern type="SYNC_SET_STACKTRACE">
+		<ShortDescription>Throwable.setStackTrace</ShortDescription>
+		<LongDescription>Throwable.setStackTrace in {1}</LongDescription>
+		<Details>
+			<![CDATA[<p>Usage of Throwable.setStackTrace is forbidden</p>]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="SST">setStackTrace</BugCode>
 
 </MessageCollection>
