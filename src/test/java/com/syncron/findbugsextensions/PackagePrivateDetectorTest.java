@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.syncron.findbugsextensions.otherpackage.AnnotationForbiddenUser;
+import com.syncron.findbugsextensions.otherpackage.PackagePrivateExtenderAllowedExtender;
 import com.syncron.findbugsextensions.otherpackage.PackagePrivateForbiddenExtender;
 import com.syncron.findbugsextensions.otherpackage.PackagePrivateForbiddenUser;
 import com.syncron.findbugsextensions.utils.BaseDetectorTestCase;
@@ -83,6 +84,19 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 
 		// then
 		assertEquals(bugs.size(), 1, "There should be 1 PACKAGE_PRIVATE_USAGE bug in " + classWithProblem);
+	}
+
+	@Test
+	public void shouldAllowIndirectPackagePrivateClassExtensions() {
+		// given
+		Class<?> okClass = PackagePrivateExtenderAllowedExtender.class;
+		Class<?> packagePrivate = PackagePrivateAnnotatedClass.class;
+
+		// when
+		List<BugInstance> bugs = runDetector(okClass, packagePrivate);
+
+		// then
+		assertEquals(bugs.isEmpty(), true, "There should be no PACKAGE_PRIVATE_USAGE bug in " + okClass);
 	}
 
 	private List<BugInstance> runDetector(Class<?> offendingClass, Class<?> offendedClass) {

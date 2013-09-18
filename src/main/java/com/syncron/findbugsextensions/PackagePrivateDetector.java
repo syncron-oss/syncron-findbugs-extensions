@@ -62,9 +62,8 @@ public class PackagePrivateDetector extends BytecodeScanningDetector {
 		PackagePrivateCache cache = Global.getAnalysisCache().getDatabase(PackagePrivateCache.class);
 		String className = javaClass.getClassName().replaceAll("\\.", "/");
 		try {
-			for (JavaClass superClass : javaClass.getSuperClasses())
-				if (isForbiddenPackagePrivateExtension(cache, className, superClass))
-					bugReporter.reportBug(createPackagePrivateUsageInClassBug());
+			if (isForbiddenPackagePrivateExtension(cache, className, javaClass.getSuperClass()))
+				bugReporter.reportBug(createPackagePrivateUsageInClassBug());
 		} catch (ClassNotFoundException e) {
 			bugReporter.reportMissingClass(e);
 		}
