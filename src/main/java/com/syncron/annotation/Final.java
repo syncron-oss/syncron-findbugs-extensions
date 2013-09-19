@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
  * 
  * @author piofin <piotr.findeisen@syncron.com>
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target({ ElementType.METHOD, ElementType.TYPE })
 public @interface Final {
 

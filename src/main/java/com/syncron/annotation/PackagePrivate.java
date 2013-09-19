@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * @author piofin <piotr.findeisen@syncron.com>
  * @since Feb 14, 2012
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target({ ElementType.METHOD, ElementType.TYPE, ElementType.CONSTRUCTOR, ElementType.ANNOTATION_TYPE })
 public @interface PackagePrivate {
 	String publicBecause() default "";
