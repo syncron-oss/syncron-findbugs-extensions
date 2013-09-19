@@ -29,10 +29,6 @@
 		<Details>Finds usage of Throwable.setStackTrace</Details>
 	</Detector>
 
-	<Detector class="com.syncron.findbugsextensions.PackagePrivateGatherer">
-		<Details>Gathers info about methods annotated @PackagePrivate</Details>
-	</Detector>
-
 	<Detector class="com.syncron.findbugsextensions.PackagePrivateDetector">
 		<Details>Finds usage of @PackagePrivate</Details>
 	</Detector>

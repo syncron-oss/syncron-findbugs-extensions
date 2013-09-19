@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.syncron.findbugsextensions.otherpackage.AnnotationForbiddenUser;
@@ -25,10 +24,9 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 	public void shouldAllowPackagePrivateForMethod() {
 		// given
 		Class<?> okClass = PackagePrivateUser.class;
-		Class<?> packagePrivate = PackagePrivateAnnotatedMethodAndConstructor.class;
 
 		// when
-		List<BugInstance> bugs = runDetector(okClass, packagePrivate);
+		List<BugInstance> bugs = runDetector(okClass);
 
 		// then
 		assertTrue(bugs.isEmpty(), "There should be no PACKAGE_PRIVATE_USAGE bugs in " + okClass);
@@ -38,10 +36,9 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 	public void shouldForbidPackagePrivateForMethod() {
 		// given
 		Class<?> classWithProblem = PackagePrivateForbiddenUser.class;
-		Class<?> packagePrivate = PackagePrivateAnnotatedMethodAndConstructor.class;
 
 		// when
-		List<BugInstance> bugs = runDetector(classWithProblem, packagePrivate);
+		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
 		assertEquals(bugs.size(), 2, "There should be 2 PACKAGE_PRIVATE_USAGE bugs in " + classWithProblem);
@@ -51,10 +48,9 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 	public void shouldAllowPackagePrivateForClass() {
 		// given
 		Class<?> okClass = PackagePrivateExtender.class;
-		Class<?> packagePrivate = PackagePrivateAnnotatedClass.class;
 
 		// when
-		List<BugInstance> bugs = runDetector(okClass, packagePrivate);
+		List<BugInstance> bugs = runDetector(okClass);
 
 		// then
 		assertEquals(bugs.size(), 0, "There should be no PACKAGE_PRIVATE_USAGE bug in " + okClass);
@@ -64,10 +60,9 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 	public void shouldForbidPackagePrivateForClass() {
 		// given
 		Class<?> classWithProblem = PackagePrivateForbiddenExtender.class;
-		Class<?> packagePrivate = PackagePrivateAnnotatedClass.class;
 
 		// when
-		List<BugInstance> bugs = runDetector(classWithProblem, packagePrivate);
+		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
 		assertEquals(bugs.size(), 1, "There should be 1 PACKAGE_PRIVATE_USAGE bug in " + classWithProblem);
@@ -77,10 +72,9 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 	public void shouldForbidPackagePrivateForMethodAnnotation() {
 		// given
 		Class<?> classWithProblem = AnnotationForbiddenUser.class;
-		Class<?> packagePrivate = AnnotationPackagePrivate.class;
 
 		// when
-		List<BugInstance> bugs = runDetector(classWithProblem, packagePrivate);
+		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
 		assertEquals(bugs.size(), 1, "There should be 1 PACKAGE_PRIVATE_USAGE bug in " + classWithProblem);
@@ -90,22 +84,16 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 	public void shouldAllowIndirectPackagePrivateClassExtensions() {
 		// given
 		Class<?> okClass = PackagePrivateExtenderAllowedExtender.class;
-		Class<?> packagePrivate = PackagePrivateAnnotatedClass.class;
 
 		// when
-		List<BugInstance> bugs = runDetector(okClass, packagePrivate);
+		List<BugInstance> bugs = runDetector(okClass);
 
 		// then
 		assertEquals(bugs.isEmpty(), true, "There should be no PACKAGE_PRIVATE_USAGE bug in " + okClass);
 	}
 
-	private List<BugInstance> runDetector(Class<?> offendingClass, Class<?> offendedClass) {
+	private List<BugInstance> runDetector(Class<?> offendingClass) {
 		BugPattern bugPattern = new BugPattern("PACKAGE_PRIVATE_USAGE", "PPU", "CORRECTNESS", true, "", "", "");
-
-		// set up cache
-		Collection<BugInstance> gathererBugs = runDetector(new PackagePrivateGatherer(getBugReporter()), offendedClass,
-				bugPattern);
-		Assert.assertTrue(gathererBugs.isEmpty(), "PackagePrivateGatherer should report no bugs");
 
 		// find forbidden @PackagePrivate usage
 		Collection<BugInstance> bugs = runDetector(new PackagePrivateDetector(getBugReporter()), offendingClass,
