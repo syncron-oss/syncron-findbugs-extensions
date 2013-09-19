@@ -2,7 +2,7 @@ package com.syncron.findbugsextensions;
 
 import com.syncron.annotation.PackagePrivate;
 
-@PackagePrivate
+@PackagePrivate(publicBecause = "this is a test case")
 public class PackagePrivateAnnotatedClass {
 
 }

@@ -4,12 +4,12 @@ import com.syncron.annotation.PackagePrivate;
 
 public class PackagePrivateAnnotatedMethodAndConstructor {
 
-	@PackagePrivate
+	@PackagePrivate(publicBecause = "this is a test case")
 	public void packagePrivate() {
 
 	}
 
-	@PackagePrivate
+	@PackagePrivate(publicBecause = "this is a test case")
 	public PackagePrivateAnnotatedMethodAndConstructor() {
 
 	}
