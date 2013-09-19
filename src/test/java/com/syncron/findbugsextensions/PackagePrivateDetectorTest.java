@@ -29,7 +29,7 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(okClass);
 
 		// then
-		assertTrue(bugs.isEmpty(), "There should be no PACKAGE_PRIVATE_USAGE bugs in " + okClass);
+		assertTrue(bugs.isEmpty(), "There should be no SYNC_PACKAGE_PRIVATE_USAGE bugs in " + okClass);
 	}
 
 	@Test
@@ -41,7 +41,7 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		assertEquals(bugs.size(), 2, "There should be 2 PACKAGE_PRIVATE_USAGE bugs in " + classWithProblem);
+		assertEquals(bugs.size(), 2, "There should be 2 SYNC_PACKAGE_PRIVATE_USAGE bugs in " + classWithProblem);
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(okClass);
 
 		// then
-		assertEquals(bugs.size(), 0, "There should be no PACKAGE_PRIVATE_USAGE bug in " + okClass);
+		assertEquals(bugs.size(), 0, "There should be no SYNC_PACKAGE_PRIVATE_USAGE bug in " + okClass);
 	}
 
 	@Test
@@ -65,7 +65,7 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		assertEquals(bugs.size(), 1, "There should be 1 PACKAGE_PRIVATE_USAGE bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be 1 SYNC_PACKAGE_PRIVATE_USAGE bug in " + classWithProblem);
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		assertEquals(bugs.size(), 1, "There should be 1 PACKAGE_PRIVATE_USAGE bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be 1 SYNC_PACKAGE_PRIVATE_USAGE bug in " + classWithProblem);
 	}
 
 	@Test
@@ -89,11 +89,11 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(okClass);
 
 		// then
-		assertEquals(bugs.isEmpty(), true, "There should be no PACKAGE_PRIVATE_USAGE bug in " + okClass);
+		assertEquals(bugs.isEmpty(), true, "There should be no SYNC_PACKAGE_PRIVATE_USAGE bug in " + okClass);
 	}
 
 	private List<BugInstance> runDetector(Class<?> offendingClass) {
-		BugPattern bugPattern = new BugPattern("PACKAGE_PRIVATE_USAGE", "PPU", "CORRECTNESS", true, "", "", "");
+		BugPattern bugPattern = new BugPattern("SYNC_PACKAGE_PRIVATE_USAGE", "SPPU", "CORRECTNESS", true, "", "", "");
 
 		// find forbidden @PackagePrivate usage
 		Collection<BugInstance> bugs = runDetector(new PackagePrivateDetector(getBugReporter()), offendingClass,

@@ -19,7 +19,7 @@ import edu.umd.cs.findbugs.classfile.DescriptorFactory;
 
 public class PackagePrivateDetector extends BytecodeScanningDetector {
 
-	private static final String BUG_NAME = "PACKAGE_PRIVATE_USAGE";
+	private static final String BUG_NAME = "SYNC_PACKAGE_PRIVATE_USAGE";
 
 	private BugReporter bugReporter;
 

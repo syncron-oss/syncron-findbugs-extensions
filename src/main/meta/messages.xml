@@ -90,13 +90,13 @@
 	</BugPattern>
 	<BugCode abbrev="SST">setStackTrace</BugCode>
 
-	<BugPattern type="PACKAGE_PRIVATE_USAGE">
+	<BugPattern type="SYNC_PACKAGE_PRIVATE_USAGE">
 		<ShortDescription>@PackagePrivate</ShortDescription>
 		<LongDescription>@PackagePrivate usage in {0}</LongDescription>
 		<Details>
 			<![CDATA[<p>Usage of @PackagePrivate from outside of its package is forbidden</p>]]>
 		</Details>
 	</BugPattern>
-	<BugCode abbrev="PPU">PackagePrivate</BugCode>
+	<BugCode abbrev="SPPU">PackagePrivate</BugCode>
 
 </MessageCollection>
