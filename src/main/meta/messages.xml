@@ -37,7 +37,9 @@
 		<ShortDescription>Throwable.printStackTrace</ShortDescription>
 		<LongDescription>Throwable.printStackTrace in {1}</LongDescription>
 		<Details>
-			<![CDATA[<p>Usage of Throwable.printStackTrace is forbidden!</p>]]>
+			<![CDATA[
+				<p>Usage of Throwable.printStackTrace is forbidden. Please consider sending the Throwable to log.</p>
+			]]>
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="PST">printStackTrace</BugCode>
@@ -48,7 +50,10 @@
 		<LongDescription>Class or method with @Final was extended {0}
 		</LongDescription>
 		<Details>
-			<![CDATA[<p>Cannot extend anything annotated @com.syncron.Final</p>]]>
+			<![CDATA[
+				<p>Extending classes or overriding methods annotated @Final is forbidden. These classes and methods
+				should be treated as if they were declared with <strong>final</strong> keyword.</p>
+			]]>
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="AF">Final</BugCode>
@@ -57,7 +62,9 @@
 		<ShortDescription>java.util.Calendar</ShortDescription>
 		<LongDescription>static java.util.Calendar in {1}</LongDescription>
 		<Details>
-			<![CDATA[<p>Usage of static Calendar is forbidden</p>]]>
+			<![CDATA[
+				<p>Usage of static Calendar is forbidden. Please consider making the field non-static.</p>
+			]]>
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="SSCI">StaticCalendarInstance</BugCode>
@@ -67,7 +74,9 @@
 		<LongDescription>static java.text.SimpleDateFormat in {1}
 		</LongDescription>
 		<Details>
-			<![CDATA[<p>Usage of static SimpleDateFormat is forbidden</p>]]>
+			<![CDATA[
+				<p>Usage of static SimpleDateFormat is forbidden. Please consider making the field non-static.</p>
+			]]>
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="SSSDFI">StaticSimpleDateFormatInstance</BugCode>
@@ -76,7 +85,9 @@
 		<ShortDescription>Throwable.toString</ShortDescription>
 		<LongDescription>Throwable.toString in {1}</LongDescription>
 		<Details>
-			<![CDATA[<p>Overriding Throwable.toString is forbidden</p>]]>
+			<![CDATA[
+				<p>Overriding Throwable.toString is forbidden. Please override Throwable.getMessage instead.</p>
+			]]>
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="STTS">Throwable.toString</BugCode>
@@ -85,7 +96,9 @@
 		<ShortDescription>Throwable.setStackTrace</ShortDescription>
 		<LongDescription>Throwable.setStackTrace in {1}</LongDescription>
 		<Details>
-			<![CDATA[<p>Usage of Throwable.setStackTrace is forbidden</p>]]>
+			<![CDATA[
+				<p>Usage of Throwable.setStackTrace is forbidden. Please call Throwable.initCause instead.</p>
+			]]>
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="SST">setStackTrace</BugCode>
@@ -94,7 +107,11 @@
 		<ShortDescription>@PackagePrivate</ShortDescription>
 		<LongDescription>@PackagePrivate usage in {0}</LongDescription>
 		<Details>
-			<![CDATA[<p>Usage of @PackagePrivate from outside of its package is forbidden</p>]]>
+			<![CDATA[
+				<p>Usage of @PackagePrivate from outside of its package is forbidden. Methods or
+				classes annotated @PackagePrivate should be treated as guarded by Java package 
+				access rule.</p>
+			]]>
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="SPPU">PackagePrivate</BugCode>
