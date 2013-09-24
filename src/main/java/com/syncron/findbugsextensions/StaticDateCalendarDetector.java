@@ -21,17 +21,17 @@ import edu.umd.cs.findbugs.classfile.DescriptorFactory;
  */
 public class StaticDateCalendarDetector extends BytecodeScanningDetector {
 
+	private static final String CALENDAR_BUG_NAME = "SYNC_STATIC_CALENDAR_INSTANCE";
+
+	private static final String SIMPLE_DATE_FORMAT_BUG_NAME = "SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE";
+
 	private final ClassDescriptor calendarType = DescriptorFactory.createClassDescriptor(Calendar.class);
 
 	private final ClassDescriptor simpleDateType = DescriptorFactory.createClassDescriptor(SimpleDateFormat.class);
 
-	private final String CALENDAR_BUG_NAME = "SYNC_STATIC_CALENDAR_INSTANCE";
-
 	private Subtypes2 subtypes2 = AnalysisContext.currentAnalysisContext().getSubtypes2();
 
 	private BugReporter bugReporter;
-
-	private final String SIMPLE_DATE_FORMAT_BUG_NAME = "SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE";
 
 	public StaticDateCalendarDetector(BugReporter bugReporter) {
 		this.bugReporter = bugReporter;
@@ -40,6 +40,10 @@ public class StaticDateCalendarDetector extends BytecodeScanningDetector {
 	@Override
 	public void visit(Field obj) {
 		ClassDescriptor classOfField = DescriptorFactory.createClassDescriptorFromFieldSignature(obj.getSignature());
+		if (classOfField == null) {
+			// no class descriptor and hence nothing to do
+			return;
+		}
 		if (obj.isStatic()) {
 			if (isCalendar(classOfField)) {
 				bugReporter.reportBug(staticCalendarInstance());
