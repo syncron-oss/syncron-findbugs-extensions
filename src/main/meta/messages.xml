@@ -33,6 +33,10 @@
 		<Details>Finds usage of @PackagePrivate</Details>
 	</Detector>
 
+	<Detector class="com.syncron.findbugsextensions.CheckStateCheckArgumentDetector">
+		<Details>Finds usage of Preconditions.checkState and Preconditions.checkArgument with single boolean argument</Details>
+	</Detector>
+
 	<BugPattern type="SYNC_PRINT_STACKTRACE">
 		<ShortDescription>Throwable.printStackTrace</ShortDescription>
 		<LongDescription>Throwable.printStackTrace in {1}</LongDescription>
@@ -115,5 +119,18 @@
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="SPPU">PackagePrivate</BugCode>
+
+	<BugPattern type="SYNC_CHECK_STATE_CHECK_ARGUMENT_NO_MESSAGE">
+		<ShortDescription>CheckState CheckArgument</ShortDescription>
+		<LongDescription>CheckState CheckArgument in {1}</LongDescription>
+		<Details>
+			<![CDATA[
+				<p>Usage of checkState and checkArgument with single boolean argument is forbidden.
+				These methods should be used with two arguments in order to provide more meaningful
+				exception messages.</p>
+			]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="SCSCANM">CheckState CheckArgument</BugCode>
 
 </MessageCollection>

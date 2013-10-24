@@ -21,4 +21,7 @@
 	<Detector class="com.syncron.findbugsextensions.PackagePrivateDetector" reports="SYNC_PACKAGE_PRIVATE_USAGE" />
 	<BugPattern type="SYNC_PACKAGE_PRIVATE_USAGE" abbrev="SPPU" category="CORRECTNESS" />
 
+	<Detector class="com.syncron.findbugsextensions.CheckStateCheckArgumentDetector" reports="SYNC_CHECK_STATE_CHECK_ARGUMENT_NO_MESSAGE" />
+	<BugPattern type="SYNC_CHECK_STATE_CHECK_ARGUMENT_NO_MESSAGE" abbrev="SCSCANM" category="CORRECTNESS" />
+
 </FindbugsPlugin>
