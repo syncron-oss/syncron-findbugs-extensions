@@ -37,6 +37,10 @@
 		<Details>Finds usage of Preconditions.checkState and Preconditions.checkArgument with single boolean argument</Details>
 	</Detector>
 
+	<Detector class="com.syncron.findbugsextensions.NonStaticLoggerDetector">
+		<Details>Finds non static usage of org.slf4j.Logger</Details>
+	</Detector>
+
 	<BugPattern type="SYNC_PRINT_STACKTRACE">
 		<ShortDescription>Throwable.printStackTrace</ShortDescription>
 		<LongDescription>Throwable.printStackTrace in {1}</LongDescription>
@@ -132,5 +136,16 @@
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="SCSCANM">CheckState CheckArgument</BugCode>
+
+	<BugPattern type="SYNC_NON_STATIC_LOGGER">
+		<ShortDescription>Non static org.slf4j.Logger</ShortDescription>
+		<LongDescription>Non static org.slf4j.Logger in {0}</LongDescription>
+		<Details>
+			<![CDATA[
+				<p>Non static Logger fields must be initialized in constructors only.</p>
+			]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="SNSL">NonStaticLogger</BugCode>
 
 </MessageCollection>
