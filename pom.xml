@@ -35,6 +35,7 @@
 							<resources>
 								<resource>
 									<directory>src/main/meta</directory>
+									<filtering>true</filtering>
 								</resource>
 								<resource>
 									<directory>${project.build.outputDirectory}</directory>

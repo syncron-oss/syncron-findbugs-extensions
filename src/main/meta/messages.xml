@@ -3,7 +3,7 @@
 	xsi:noNamespaceSchemaLocation="messagecollection.xsd">
 
 	<Plugin>
-		<ShortDescription>Syncron Findbugs Extensions</ShortDescription>
+		<ShortDescription>Syncron Findbugs Extensions ${version}</ShortDescription>
 		<Details>
 			<![CDATA[<p>This plugin contains FindBugs detectors from the Syncron Findbugs Extensions project</p>]]>
 		</Details>
