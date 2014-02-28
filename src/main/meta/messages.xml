@@ -9,35 +9,35 @@
 		</Details>
 	</Plugin>
 
-	<Detector class="com.syncron.findbugsextensions.PrintStackTraceDetector">
+	<Detector class="com.syncron.bpp.findbugsextensions.PrintStackTraceDetector">
 		<Details>Finds usage of Throwable.printStackTrace.</Details>
 	</Detector>
 
-	<Detector class="com.syncron.findbugsextensions.FinalOverrideDetector">
+	<Detector class="com.syncron.bpp.findbugsextensions.FinalOverrideDetector">
 		<Details>Finds classes and methods which override classes and methods with Final annotation</Details>
 	</Detector>
 
-	<Detector class="com.syncron.findbugsextensions.StaticDateCalendarDetector">
+	<Detector class="com.syncron.bpp.findbugsextensions.StaticDateCalendarDetector">
 		<Details>Finds usage of static Calendar or SimpleDateFormat</Details>
 	</Detector>
 
-	<Detector class="com.syncron.findbugsextensions.ThrowableToStringDetector">
+	<Detector class="com.syncron.bpp.findbugsextensions.ThrowableToStringDetector">
 		<Details>Finds overriding of Throwable.toString</Details>
 	</Detector>
 
-	<Detector class="com.syncron.findbugsextensions.SetStackTraceDetector">
+	<Detector class="com.syncron.bpp.findbugsextensions.SetStackTraceDetector">
 		<Details>Finds usage of Throwable.setStackTrace</Details>
 	</Detector>
 
-	<Detector class="com.syncron.findbugsextensions.PackagePrivateDetector">
+	<Detector class="com.syncron.bpp.findbugsextensions.PackagePrivateDetector">
 		<Details>Finds usage of @PackagePrivate</Details>
 	</Detector>
 
-	<Detector class="com.syncron.findbugsextensions.CheckStateCheckArgumentDetector">
+	<Detector class="com.syncron.bpp.findbugsextensions.CheckStateCheckArgumentDetector">
 		<Details>Finds usage of Preconditions.checkState and Preconditions.checkArgument with single boolean argument</Details>
 	</Detector>
 
-	<Detector class="com.syncron.findbugsextensions.NonStaticLoggerDetector">
+	<Detector class="com.syncron.bpp.findbugsextensions.NonStaticLoggerDetector">
 		<Details>Finds non static usage of org.slf4j.Logger</Details>
 	</Detector>
 

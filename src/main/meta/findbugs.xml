@@ -1,30 +1,30 @@
 <FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="findbugsplugin.xsd"
-	pluginid="com.syncron.findbugs" defaultenabled="true" provider="Syncron" website="http://www.syncron.com">
+	pluginid="com.syncron.bpp.findbugsextensions" defaultenabled="true" provider="Syncron" website="http://www.syncron.com">
 
-	<Detector class="com.syncron.findbugsextensions.PrintStackTraceDetector" reports="SYNC_PRINT_STACKTRACE" />
+	<Detector class="com.syncron.bpp.findbugsextensions.PrintStackTraceDetector" reports="SYNC_PRINT_STACKTRACE" />
 	<BugPattern type="SYNC_PRINT_STACKTRACE" abbrev="PST" category="CORRECTNESS" />
 
-	<Detector class="com.syncron.findbugsextensions.FinalOverrideDetector" reports="SYNC_FINAL_OVERRIDDEN" />
+	<Detector class="com.syncron.bpp.findbugsextensions.FinalOverrideDetector" reports="SYNC_FINAL_OVERRIDDEN" />
 	<BugPattern type="SYNC_FINAL_OVERRIDDEN" abbrev="AF" category="CORRECTNESS" />
 
-	<Detector class="com.syncron.findbugsextensions.StaticDateCalendarDetector" speed="fast"
+	<Detector class="com.syncron.bpp.findbugsextensions.StaticDateCalendarDetector" speed="fast"
 		reports="SYNC_STATIC_CALENDAR_INSTANCE,SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE" />
 	<BugPattern type="SYNC_STATIC_CALENDAR_INSTANCE" abbrev="SSCI" category="CORRECTNESS" />
 	<BugPattern type="SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE" abbrev="SSSDFI" category="CORRECTNESS" />
 
-	<Detector class="com.syncron.findbugsextensions.ThrowableToStringDetector" reports="SYNC_THROWABLE_TOSTRING" />
+	<Detector class="com.syncron.bpp.findbugsextensions.ThrowableToStringDetector" reports="SYNC_THROWABLE_TOSTRING" />
 	<BugPattern type="SYNC_THROWABLE_TOSTRING" abbrev="STTS" category="CORRECTNESS" />
 
-	<Detector class="com.syncron.findbugsextensions.SetStackTraceDetector" reports="SYNC_SET_STACKTRACE" />
+	<Detector class="com.syncron.bpp.findbugsextensions.SetStackTraceDetector" reports="SYNC_SET_STACKTRACE" />
 	<BugPattern type="SYNC_SET_STACKTRACE" abbrev="SST" category="CORRECTNESS" />
 
-	<Detector class="com.syncron.findbugsextensions.PackagePrivateDetector" reports="SYNC_PACKAGE_PRIVATE_USAGE" />
+	<Detector class="com.syncron.bpp.findbugsextensions.PackagePrivateDetector" reports="SYNC_PACKAGE_PRIVATE_USAGE" />
 	<BugPattern type="SYNC_PACKAGE_PRIVATE_USAGE" abbrev="SPPU" category="CORRECTNESS" />
 
-	<Detector class="com.syncron.findbugsextensions.CheckStateCheckArgumentDetector" reports="SYNC_CHECK_STATE_CHECK_ARGUMENT_NO_MESSAGE" />
+	<Detector class="com.syncron.bpp.findbugsextensions.CheckStateCheckArgumentDetector" reports="SYNC_CHECK_STATE_CHECK_ARGUMENT_NO_MESSAGE" />
 	<BugPattern type="SYNC_CHECK_STATE_CHECK_ARGUMENT_NO_MESSAGE" abbrev="SCSCANM" category="CORRECTNESS" />
 
-	<Detector class="com.syncron.findbugsextensions.NonStaticLoggerDetector" reports="SYNC_NON_STATIC_LOGGER_USAGE" />
+	<Detector class="com.syncron.bpp.findbugsextensions.NonStaticLoggerDetector" reports="SYNC_NON_STATIC_LOGGER_USAGE" />
 	<BugPattern type="SYNC_NON_STATIC_LOGGER" abbrev="SNSL" category="CORRECTNESS" />
 
 </FindbugsPlugin>
