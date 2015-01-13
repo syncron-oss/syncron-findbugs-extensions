@@ -142,7 +142,10 @@
 		<LongDescription>Non static org.slf4j.Logger in {0}</LongDescription>
 		<Details>
 			<![CDATA[
-				<p>Non static Logger fields must be initialized in constructors only.</p>
+				<p>Use static loggers to prevent memory leak. If your class is parameterized with a logger,
+				you can acquire it as a constructor's parameter. If your class is abstract and you would
+				like to use subclass's logger, create <tt>protected abstract Logger log()</tt> method (note:
+				logging to subclass's logger is not necessarily recommended). </p>
 			]]>
 		</Details>
 	</BugPattern>
