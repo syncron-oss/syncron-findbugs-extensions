@@ -22,7 +22,7 @@ import edu.umd.cs.findbugs.Detector;
 
 public abstract class BaseDetectorTestCase<DetectorType extends Detector> {
 
-	private final Class<DetectorType> detectorClass;
+	protected final Class<DetectorType> detectorClass;
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public BaseDetectorTestCase() {

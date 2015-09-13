@@ -12,6 +12,10 @@
 	<Detector class="com.syncron.bpp.findbugsextensions.PrintStackTraceDetector">
 		<Details>Finds usage of Throwable.printStackTrace.</Details>
 	</Detector>
+	
+	<Detector class="com.syncron.bpp.findbugsextensions.ClassNewInstanceDetector">
+		<Details>Finds calls to Class.newInstance() which propagates checked exceptions in an unchecked way.</Details>
+	</Detector>
 
 	<Detector class="com.syncron.bpp.findbugsextensions.FinalOverrideDetector">
 		<Details>Finds classes and methods which override classes and methods with Final annotation</Details>
@@ -51,6 +55,18 @@
 		</Details>
 	</BugPattern>
 	<BugCode abbrev="PST">printStackTrace</BugCode>
+	
+	<BugPattern type="SYNC_CLASS_NEW_INSTANCE">
+		<ShortDescription>Class.newInstance()</ShortDescription>
+		<LongDescription>Class.newInstance() in {1}</LongDescription>
+		<Details>
+			<![CDATA[
+				<p>Calling Class.newInstance() is discouraged, as this method propagates checked exceptions in an
+				unchecked way. Use <tt>getConstructor().newInstance()</tt> instead.</p>
+			]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="CNI">Class.newInstance()</BugCode>
 
 	<BugPattern type="SYNC_FINAL_OVERRIDDEN">
 		<ShortDescription>Class or method with @Final was extended

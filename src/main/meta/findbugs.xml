@@ -3,6 +3,9 @@
 
 	<Detector class="com.syncron.bpp.findbugsextensions.PrintStackTraceDetector" reports="SYNC_PRINT_STACKTRACE" />
 	<BugPattern type="SYNC_PRINT_STACKTRACE" abbrev="PST" category="CORRECTNESS" />
+	
+	<Detector class="com.syncron.bpp.findbugsextensions.ClassNewInstanceDetector" reports="SYNC_CLASS_NEW_INSTANCE" />
+	<BugPattern type="SYNC_CLASS_NEW_INSTANCE" abbrev="CNI" category="CORRECTNESS" />
 
 	<Detector class="com.syncron.bpp.findbugsextensions.FinalOverrideDetector" reports="SYNC_FINAL_OVERRIDDEN" />
 	<BugPattern type="SYNC_FINAL_OVERRIDDEN" abbrev="AF" category="CORRECTNESS" />
