@@ -10,9 +10,11 @@ import edu.umd.cs.findbugs.Detector;
 import edu.umd.cs.findbugs.DetectorToDetector2Adapter;
 import edu.umd.cs.findbugs.NoOpFindBugsProgress;
 import edu.umd.cs.findbugs.Priorities;
-import edu.umd.cs.findbugs.ba.AnalysisCacheToAnalysisContextAdapter;
+import edu.umd.cs.findbugs.Project;
 import edu.umd.cs.findbugs.ba.AnalysisContext;
 import edu.umd.cs.findbugs.ba.FieldSummary;
+import edu.umd.cs.findbugs.ba.XClass;
+import edu.umd.cs.findbugs.ba.XFactory;
 import edu.umd.cs.findbugs.classfile.CheckedAnalysisException;
 import edu.umd.cs.findbugs.classfile.ClassDescriptor;
 import edu.umd.cs.findbugs.classfile.DescriptorFactory;
@@ -81,7 +83,7 @@ public class DetectorRunner {
 		builder.build(classPath, progress);
 		List<ClassDescriptor> appClassList = builder.getAppClassList();
 
-		AnalysisCacheToAnalysisContextAdapter analysisContext = new AnalysisCacheToAnalysisContextAdapter();
+		AnalysisContext analysisContext = new AnalysisContext(new Project());
 		AnalysisContext.setCurrentAnalysisContext(analysisContext);
 		analysisContext.setAppClassList(appClassList);
 		analysisContext.setFieldSummary(new FieldSummary());
@@ -108,6 +110,11 @@ public class DetectorRunner {
 
 		String dottedClassName = classToTest.getName();
 		ClassDescriptor classDescriptor = DescriptorFactory.createClassDescriptorFromDottedClassName(dottedClassName);
+
+		XFactory xfFactory = AnalysisContext.currentXFactory();
+		XClass xClass = Global.getAnalysisCache().getClassAnalysis(XClass.class, classDescriptor);
+		xfFactory.intern(xClass);
+
 		adapter.visitClass(classDescriptor);
 	}
 
