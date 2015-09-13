@@ -1,21 +1,19 @@
 package com.syncron.bpp.findbugsextensions;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import static java.util.Arrays.asList;
+import static org.testng.Assert.assertEquals;
+
 import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.syncron.bpp.findbugsextensions.StaticDateCalendarDetector;
 import com.syncron.bpp.findbugsextensions.utils.BaseDetectorTestCase;
 
 import edu.umd.cs.findbugs.BugInstance;
-import edu.umd.cs.findbugs.BugPattern;
-import edu.umd.cs.findbugs.Detector;
 
-public class CalendarStaticMemberTest extends BaseDetectorTestCase {
-
+public class CalendarStaticMemberTest extends BaseDetectorTestCase<StaticDateCalendarDetector> {
+	
 	@Test
 	public void shouldDetectCalendarStaticField() {
 		// given
@@ -25,8 +23,8 @@ public class CalendarStaticMemberTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_STATIC_CALENDAR_INSTANCE bug in "
-				+ classWithProblem);
+		Assert.assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(StaticDateCalendarDetector.CALENDAR_BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -54,13 +52,5 @@ public class CalendarStaticMemberTest extends BaseDetectorTestCase {
 
 		// then
 		Assert.assertTrue(bugs.isEmpty(), "There should be no SYNC_STATIC_CALENDAR_INSTANCE bugs in " + okClass);
-	}
-
-	private List<BugInstance> runDetector(Class<?> testedClass) {
-		BugPattern bugPattern =
-				new BugPattern("SYNC_STATIC_CALENDAR_INSTANCE", "SSCI", "CORRECTNESS", true, "", "", "");
-		Detector staticDateCalendarDetector = new StaticDateCalendarDetector(getBugReporter());
-		Collection<BugInstance> bugs = runDetector(staticDateCalendarDetector, testedClass, bugPattern);
-		return new ArrayList<BugInstance>(bugs);
 	}
 }

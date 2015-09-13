@@ -1,15 +1,13 @@
 package com.syncron.bpp.findbugsextensions;
 
+import static java.util.Arrays.asList;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.testng.annotations.Test;
 
-import com.syncron.bpp.findbugsextensions.PackagePrivateDetector;
 import com.syncron.bpp.findbugsextensions.otherpackage.AnnotationForbiddenUser;
 import com.syncron.bpp.findbugsextensions.otherpackage.PackagePrivateExtenderAllowedExtender;
 import com.syncron.bpp.findbugsextensions.otherpackage.PackagePrivateForbiddenExtender;
@@ -17,9 +15,8 @@ import com.syncron.bpp.findbugsextensions.otherpackage.PackagePrivateForbiddenUs
 import com.syncron.bpp.findbugsextensions.utils.BaseDetectorTestCase;
 
 import edu.umd.cs.findbugs.BugInstance;
-import edu.umd.cs.findbugs.BugPattern;
 
-public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
+public class PackagePrivateDetectorTest extends BaseDetectorTestCase<PackagePrivateDetector> {
 
 	@Test
 	public void shouldAllowPackagePrivateForMethod() {
@@ -66,7 +63,8 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		assertEquals(bugs.size(), 1, "There should be 1 SYNC_PACKAGE_PRIVATE_USAGE bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(PackagePrivateDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -78,7 +76,8 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		assertEquals(bugs.size(), 1, "There should be 1 SYNC_PACKAGE_PRIVATE_USAGE bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(PackagePrivateDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -91,14 +90,5 @@ public class PackagePrivateDetectorTest extends BaseDetectorTestCase {
 
 		// then
 		assertEquals(bugs.isEmpty(), true, "There should be no SYNC_PACKAGE_PRIVATE_USAGE bug in " + okClass);
-	}
-
-	private List<BugInstance> runDetector(Class<?> offendingClass) {
-		BugPattern bugPattern = new BugPattern("SYNC_PACKAGE_PRIVATE_USAGE", "SPPU", "CORRECTNESS", true, "", "", "");
-
-		// find forbidden @PackagePrivate usage
-		Collection<BugInstance> bugs = runDetector(new PackagePrivateDetector(getBugReporter()), offendingClass,
-				bugPattern);
-		return new LinkedList<BugInstance>(bugs);
 	}
 }

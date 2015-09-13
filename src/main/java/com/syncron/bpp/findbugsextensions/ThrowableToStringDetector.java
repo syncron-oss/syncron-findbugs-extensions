@@ -9,7 +9,7 @@ import edu.umd.cs.findbugs.ba.ch.Subtypes2;
 
 public class ThrowableToStringDetector extends BytecodeScanningDetector {
 
-	private static final String BUG_NAME = "SYNC_THROWABLE_TOSTRING";
+	static final String BUG_NAME = "SYNC_THROWABLE_TOSTRING";
 
 	private BugReporter bugReporter;
 

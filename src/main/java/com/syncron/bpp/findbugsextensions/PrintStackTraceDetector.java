@@ -8,7 +8,7 @@ import edu.umd.cs.findbugs.BytecodeScanningDetector;
 
 public class PrintStackTraceDetector extends BytecodeScanningDetector {
 
-	private static final String BUG_NAME = "SYNC_PRINT_STACKTRACE";
+	static final String BUG_NAME = "SYNC_PRINT_STACKTRACE";
 
 	private BugReporter bugReporter;
 

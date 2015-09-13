@@ -23,7 +23,7 @@ public class FinalOverrideDetector extends AnnotationDetector {
 
 	private static final String FINAL_ANNOTATION_BYTECODE_NAME = "L" + Final.class.getName().replace('.', '/') + ";";
 
-	private static final String BUG_NAME = "SYNC_FINAL_OVERRIDDEN";
+	static final String BUG_NAME = "SYNC_FINAL_OVERRIDDEN";
 
 	private BugReporter bugReporter;
 

@@ -1,19 +1,18 @@
 package com.syncron.bpp.findbugsextensions;
 
-import java.util.Collection;
-import java.util.LinkedList;
+import static java.util.Arrays.asList;
+import static org.testng.Assert.assertEquals;
+
 import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.syncron.bpp.findbugsextensions.NonStaticLoggerDetector;
 import com.syncron.bpp.findbugsextensions.utils.BaseDetectorTestCase;
 
 import edu.umd.cs.findbugs.BugInstance;
-import edu.umd.cs.findbugs.BugPattern;
 
-public class NonStaticLoggerDetectorTest extends BaseDetectorTestCase {
+public class NonStaticLoggerDetectorTest extends BaseDetectorTestCase<NonStaticLoggerDetector> {
 
 	@Test
 	public void shouldNotDetectAnyFaultsInNonStaticUsage() {
@@ -48,7 +47,8 @@ public class NonStaticLoggerDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_NON_STATIC_LOGGER bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(NonStaticLoggerDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -60,7 +60,8 @@ public class NonStaticLoggerDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_NON_STATIC_LOGGER bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(NonStaticLoggerDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -72,7 +73,8 @@ public class NonStaticLoggerDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_NON_STATIC_LOGGER bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(NonStaticLoggerDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -96,14 +98,7 @@ public class NonStaticLoggerDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_NON_STATIC_LOGGER bug in " + classWithProblem);
-	}
-
-	private List<BugInstance> runDetector(Class<?> offendingClass) {
-		BugPattern bugPattern = new BugPattern("SYNC_NON_STATIC_LOGGER", "SNSL", "CORRECTNESS", true, "", "", "");
-
-		Collection<BugInstance> bugs = runDetector(new NonStaticLoggerDetector(getBugReporter()), offendingClass,
-				bugPattern);
-		return new LinkedList<BugInstance>(bugs);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(NonStaticLoggerDetector.BUG_NAME), "found bugs' types");
 	}
 }

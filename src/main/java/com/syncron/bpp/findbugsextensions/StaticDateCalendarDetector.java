@@ -21,9 +21,9 @@ import edu.umd.cs.findbugs.classfile.DescriptorFactory;
  */
 public class StaticDateCalendarDetector extends BytecodeScanningDetector {
 
-	private static final String CALENDAR_BUG_NAME = "SYNC_STATIC_CALENDAR_INSTANCE";
+	static final String CALENDAR_BUG_NAME = "SYNC_STATIC_CALENDAR_INSTANCE";
 
-	private static final String SIMPLE_DATE_FORMAT_BUG_NAME = "SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE";
+	static final String SIMPLE_DATE_FORMAT_BUG_NAME = "SYNC_STATIC_SIMPLE_DATE_FORMAT_INSTANCE";
 
 	private final ClassDescriptor calendarType = DescriptorFactory.createClassDescriptor(Calendar.class);
 

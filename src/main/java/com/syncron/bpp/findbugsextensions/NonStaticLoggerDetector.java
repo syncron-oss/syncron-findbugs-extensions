@@ -17,7 +17,7 @@ public class NonStaticLoggerDetector extends BytecodeScanningDetector {
 
 	private static final String JVM_LOGGER_CLASS_NAME = "L" + LOGGER_CLASS_NAME + ";";
 
-	private static final String BUG_NAME = "SYNC_NON_STATIC_LOGGER";
+	static final String BUG_NAME = "SYNC_NON_STATIC_LOGGER";
 
 	private BugReporter bugReporter;
 

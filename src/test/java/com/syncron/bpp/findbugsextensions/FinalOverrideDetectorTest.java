@@ -1,20 +1,18 @@
 package com.syncron.bpp.findbugsextensions;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import static java.util.Arrays.asList;
+import static org.testng.Assert.assertEquals;
+
 import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.syncron.bpp.findbugsextensions.FinalOverrideDetector;
 import com.syncron.bpp.findbugsextensions.utils.BaseDetectorTestCase;
 
 import edu.umd.cs.findbugs.BugInstance;
-import edu.umd.cs.findbugs.BugPattern;
-import edu.umd.cs.findbugs.Detector;
 
-public class FinalOverrideDetectorTest extends BaseDetectorTestCase {
+public class FinalOverrideDetectorTest extends BaseDetectorTestCase<FinalOverrideDetector> {
 
 	@Test
 	public void shouldFindFinalAnnotatedClassExtension() {
@@ -25,7 +23,8 @@ public class FinalOverrideDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_FINAL_OVERRIDDEN bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(FinalOverrideDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -49,7 +48,8 @@ public class FinalOverrideDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_FINAL_OVERRIDDEN bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(FinalOverrideDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -61,7 +61,8 @@ public class FinalOverrideDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_FINAL_OVERRIDDEN bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(FinalOverrideDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -85,13 +86,7 @@ public class FinalOverrideDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_FINAL_OVERRIDDEN bug in " + classWithProblem);
-	}
-
-	private List<BugInstance> runDetector(Class<?> testedClass) {
-		BugPattern bugPattern = new BugPattern("SYNC_FINAL_OVERRIDDEN", "AF", "CORRECTNESS", true, "", "", "");
-		Detector finalAssertionDetector = new FinalOverrideDetector(getBugReporter());
-		Collection<BugInstance> bugs = runDetector(finalAssertionDetector, testedClass, bugPattern);
-		return new ArrayList<BugInstance>(bugs);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(FinalOverrideDetector.BUG_NAME), "found bugs' types");
 	}
 }

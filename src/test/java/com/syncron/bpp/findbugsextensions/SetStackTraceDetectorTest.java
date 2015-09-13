@@ -1,20 +1,18 @@
 package com.syncron.bpp.findbugsextensions;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import static java.util.Arrays.asList;
+import static org.testng.Assert.assertEquals;
+
 import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.syncron.bpp.findbugsextensions.SetStackTraceDetector;
 import com.syncron.bpp.findbugsextensions.utils.BaseDetectorTestCase;
 
 import edu.umd.cs.findbugs.BugInstance;
-import edu.umd.cs.findbugs.BugPattern;
-import edu.umd.cs.findbugs.Detector;
 
-public class SetStackTraceDetectorTest extends BaseDetectorTestCase {
+public class SetStackTraceDetectorTest extends BaseDetectorTestCase<SetStackTraceDetector> {
 
 	@Test
 	public void shouldDetectSetStackTraceBug() {
@@ -25,7 +23,8 @@ public class SetStackTraceDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There should be 1 SYNC_SET_STACKTRACE bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(SetStackTraceDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -38,12 +37,5 @@ public class SetStackTraceDetectorTest extends BaseDetectorTestCase {
 
 		// then
 		Assert.assertEquals(bugs.size(), 0, "There should no SYNC_SET_STACKTRACE bugs in " + okClass);
-	}
-
-	private List<BugInstance> runDetector(Class<?> testedClass) {
-		BugPattern bugPattern = new BugPattern("SYNC_SET_STACKTRACE", "SST", "CORRECTNESS", true, "", "", "");
-		Detector printStackTraceDetector = new SetStackTraceDetector(getBugReporter());
-		Collection<BugInstance> bugs = runDetector(printStackTraceDetector, testedClass, bugPattern);
-		return new ArrayList<BugInstance>(bugs);
 	}
 }

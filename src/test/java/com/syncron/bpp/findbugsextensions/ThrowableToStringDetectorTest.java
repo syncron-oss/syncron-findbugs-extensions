@@ -1,20 +1,18 @@
 package com.syncron.bpp.findbugsextensions;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import static java.util.Arrays.asList;
+import static org.testng.Assert.assertEquals;
+
 import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.syncron.bpp.findbugsextensions.ThrowableToStringDetector;
 import com.syncron.bpp.findbugsextensions.utils.BaseDetectorTestCase;
 
 import edu.umd.cs.findbugs.BugInstance;
-import edu.umd.cs.findbugs.BugPattern;
-import edu.umd.cs.findbugs.Detector;
 
-public class ThrowableToStringDetectorTest extends BaseDetectorTestCase {
+public class ThrowableToStringDetectorTest extends BaseDetectorTestCase<ThrowableToStringDetector> {
 
 	@Test
 	public void shouldDetectThrowableToStringBug() {
@@ -25,7 +23,8 @@ public class ThrowableToStringDetectorTest extends BaseDetectorTestCase {
 		List<BugInstance> bugs = runDetector(classWithProblem);
 
 		// then
-		Assert.assertEquals(bugs.size(), 1, "There is 1 SYNC_THROWABLE_TOSTRING bug in " + classWithProblem);
+		assertEquals(bugs.size(), 1, "There should be bug");
+		assertEquals(getTypes(bugs), asList(ThrowableToStringDetector.BUG_NAME), "found bugs' types");
 	}
 
 	@Test
@@ -38,13 +37,5 @@ public class ThrowableToStringDetectorTest extends BaseDetectorTestCase {
 
 		// then
 		Assert.assertEquals(bugs.size(), 0, "There should be no SYNC_THROWABLE_TOSTRING bugs in " + okClass);
-	}
-
-	private List<BugInstance> runDetector(Class<?> testedClass) {
-		BugPattern bugPattern =
-				new BugPattern("SYNC_THROWABLE_TOSTRING", "STTS", "CORRECTNESS", true, "", "", "");
-		Detector throwableToStringDetector = new ThrowableToStringDetector(getBugReporter());
-		Collection<BugInstance> bugs = runDetector(throwableToStringDetector, testedClass, bugPattern);
-		return new ArrayList<BugInstance>(bugs);
 	}
 }

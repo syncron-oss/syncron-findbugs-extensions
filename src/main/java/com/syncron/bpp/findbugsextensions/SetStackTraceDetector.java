@@ -8,7 +8,7 @@ import edu.umd.cs.findbugs.BytecodeScanningDetector;
 
 public class SetStackTraceDetector extends BytecodeScanningDetector {
 
-	private static final String BUG_NAME = "SYNC_SET_STACKTRACE";
+	static final String BUG_NAME = "SYNC_SET_STACKTRACE";
 
 	private BugReporter bugReporter;
 
