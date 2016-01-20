@@ -1,6 +1,12 @@
-target/
-*.patch
-test-output/
+# Maven
+/target/
+
+# Eclipse
 .classpath
 .project
 .settings
+test-output/
+
+# IntelliJ IDEA
+.idea/
+*.iml
