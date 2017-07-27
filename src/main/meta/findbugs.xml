@@ -3,7 +3,7 @@
 
 	<Detector class="com.syncron.bpp.findbugsextensions.PrintStackTraceDetector" reports="SYNC_PRINT_STACKTRACE" />
 	<BugPattern type="SYNC_PRINT_STACKTRACE" abbrev="PST" category="CORRECTNESS" />
-	
+
 	<Detector class="com.syncron.bpp.findbugsextensions.ClassNewInstanceDetector" reports="SYNC_CLASS_NEW_INSTANCE" />
 	<BugPattern type="SYNC_CLASS_NEW_INSTANCE" abbrev="CNI" category="CORRECTNESS" />
 
@@ -27,7 +27,7 @@
 	<Detector class="com.syncron.bpp.findbugsextensions.CheckStateCheckArgumentDetector" reports="SYNC_CHECK_STATE_CHECK_ARGUMENT_NO_MESSAGE" />
 	<BugPattern type="SYNC_CHECK_STATE_CHECK_ARGUMENT_NO_MESSAGE" abbrev="SCSCANM" category="CORRECTNESS" />
 
-	<Detector class="com.syncron.bpp.findbugsextensions.NonStaticLoggerDetector" reports="SYNC_NON_STATIC_LOGGER_USAGE" />
+	<Detector class="com.syncron.bpp.findbugsextensions.NonStaticLoggerDetector" reports="SYNC_NON_STATIC_LOGGER" />
 	<BugPattern type="SYNC_NON_STATIC_LOGGER" abbrev="SNSL" category="CORRECTNESS" />
 
 </FindbugsPlugin>
